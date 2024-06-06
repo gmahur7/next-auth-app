@@ -11,7 +11,7 @@ interface IEmail {
 export const sendEmail = async ({ email, emailType, userId }: IEmail) => {
     try {
         // Log the email parameter to ensure it's correct
-        console.log(`Email to be sent to: ${email}`);
+        console.log(`Email to be sent to: ${email}`,process.env.SMTP_USER);
 
         // Check if email is valid
         if (!email) {

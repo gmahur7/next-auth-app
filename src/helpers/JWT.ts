@@ -17,7 +17,7 @@ export async function generateToken(payload:IUser){
 export async function verifyT(request:NextRequest){
     try {
         const token = request.cookies.get("token")?.value || ""
-        const decoded =jwt.verify(token,Key)
+        const decoded =jwt.verify(token,Key) as IUser;
         return decoded.id
     } catch (error:any) {
         throw new Error(error.message)
