@@ -2,7 +2,6 @@ import { connect } from "@/dbConfig/dbConfig";
 import { sendEmail } from "@/helpers/node-mailer";
 import User from "@/models/userModel";
 import bcrypt from 'bcryptjs';
-import mongoose from "mongoose";
 import { NextRequest,NextResponse } from "next/server";
 connect();
 
@@ -30,13 +29,15 @@ export async function POST(request: NextRequest) {
             email,
             password:hashedPassword
         })
+        // console.log(newUser)
         newUser = await newUser.save()
-        
+
         await sendEmail({email,emailType:'VERIFY',userId:newUser._id})
 
         return NextResponse.json({message:"User Registered Successfully",status:200,success:true})
 
     } catch (error:any) {
+        console.log(error)
         return NextResponse.json({error:error.message,status:500})
     }
 }

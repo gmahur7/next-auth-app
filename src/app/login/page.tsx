@@ -4,7 +4,8 @@ import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
+// import toast from 'react-hot-toast'
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
   const router = useRouter()
@@ -20,11 +21,13 @@ const Login = () => {
         let response = await axios.post(`/api/users/login`, {
             username, password
         })
+        setLoading(true)
         if(response.data.message==="Logged In Success"){
             router.push('/profile')
             setError(false)
         }
         else {
+            toast.error(response.data.error)
             setError(true)
             setLoading(false)
             setTimeout(()=>{
@@ -33,7 +36,8 @@ const Login = () => {
         }
 
     } catch (error:any) {
-        toast.error(error.message)
+        setLoading(false)
+        toast.error("Invalid Id or Password")
     }
 }
 
@@ -67,6 +71,7 @@ const Login = () => {
                     <Link href="/signup" className='mx-0'>create account</Link>
                 </div>
             </div>
+            <ToastContainer/>
         </div>
   )
 }

@@ -1,8 +1,10 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import toast, { Toast } from 'react-hot-toast'
+// import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const Signup = () => {
     const router = useRouter()
@@ -15,7 +17,6 @@ const Signup = () => {
     const onSignup = async () => {
         if(password.length<6){
             toast.error("Password must be greater than or equal to 6 character.")
-            console.log("pass length")
             return;
             }
         try {
@@ -23,21 +24,33 @@ const Signup = () => {
             let response = await axios.post(`/api/users/signup`, {
                 username, email, password
             })
-            console.log(response.data)
+            setLoading(false)
             if(response.data.message==="User Registered Successfully"){
-                router.push('/login')
+                toast.success("You Are Registered Successfully")
+                setTimeout(()=>{
+                    router.push('/login')
+                },2000)
+            }
+            else if(response.data.error==="User Already Exists"){
+                toast.success("User Already Exists")
+            }
+            else{
+                toast.error(response.data.error)
             }
 
         } catch (error:any) {
+            setLoading(false)
             toast.error(error.message)
         }
     }
+
     useEffect(() => {
         if (username.length > 0 && email.length > 0 && password.length > 0) {
             setDisabled(true)
         }
         else setDisabled(false)
     }, [email, username, password])
+
     return (
         <div className='w-full flex flex-col justify-center items-center '>
             <div className='my-12'>
@@ -63,6 +76,7 @@ const Signup = () => {
                     <button className='bg-white text-black rounded px-2 py-1' onClick={onSignup} disabled={disabled ? false : true}>{loading ? "Processing" : "Sign Up"}</button>
                 </div>
             </div>
+            <ToastContainer/>
         </div>
     )
 }

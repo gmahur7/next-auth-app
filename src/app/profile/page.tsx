@@ -31,7 +31,7 @@ const Profile = () => {
   return (
     <div className='flex flex-col items-center justify-center min-h-screen py-2'>
         <h1>Profile Page</h1><hr/>
-        {data==='nothing'?'Nothing':<Link href={`/profile/${data}`}>{data}</Link>}<hr/>
+        {data==='nothing'?'Nothing':<Link className='text-black text-xl border p-2 rounded-md m-2 bg-white/55' href={`/profile/${data}`}>{data}</Link>}<hr/>
         <button className='bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={logout}>Logout</button>
         <button className='bg-teal-500 mt-4 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded' onClick={getData}>Get User Details</button>
     </div>
