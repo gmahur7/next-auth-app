@@ -1,5 +1,6 @@
 'use client'
 
+import { connect } from '@/dbConfig/dbConfig'
 import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -8,6 +9,9 @@ import React, { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
+
+    connect()
+
   const router = useRouter()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
