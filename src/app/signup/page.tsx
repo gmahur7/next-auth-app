@@ -52,13 +52,13 @@ const Signup = () => {
     }, [email, username, password])
 
     return (
-        <div className='w-full flex flex-col justify-center items-center '>
-            <div className='my-12'>
+        <div className='w-full flex flex-col justify-center items-center py-16 sm:py-0 '>
+            <div className='my-4 sm:my-8 sm:mt-16 '>
                 <h1 className='text-4xl'>{loading ? "Processing" : "Sign Up"}</h1>
             </div>
             <div className='border rounded-xl px-20 py-10'>
                 <div className='mb-2 text-center'>
-                    <p>Please fill the following details to sign up.</p>
+                    <p className='text-sm sm:text-xl'>Please fill the following details to sign up.</p>
                 </div>
                 <div className='my-5 sm:text-right'>
                     <label className='mr-3 text-xl'>User Name : </label>
@@ -73,7 +73,7 @@ const Signup = () => {
                     <input className='rounded text-black px-2 py-1' type="text" value={password} onChange={e => setPassword(e.target.value)} id="password" />
                 </div>
                 <div className='my-5 text-center'>
-                    <button className='bg-white text-black rounded px-2 py-1' onClick={onSignup} disabled={disabled ? false : true}>{loading ? "Processing" : "Sign Up"}</button>
+                    <button className=' bg-white border-blue-400 border-2 text-xl sm:text-lg  text-black rounded px-2 py-1' onClick={onSignup} disabled={disabled ? false : true}>{loading ? "Processing" : "Sign Up"}</button>
                 </div>
             </div>
             <ToastContainer/>
