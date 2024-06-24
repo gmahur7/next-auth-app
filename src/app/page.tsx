@@ -2,7 +2,7 @@
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export default function Home() {
@@ -38,6 +38,7 @@ export default function Home() {
   }, [])
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <main className="flex min-h-screen flex-col items-center p-20 sm:p-24 sm:my-16">
       <div className="w-full flex flex-col gap-4 sm:gap-0 items-center sm:flex-row px-4 sm:px-16 py-5 sm:justify-evenly">
         <div className="sm:order-2">
@@ -53,5 +54,6 @@ export default function Home() {
         </div>
       </div>
     </main>
+    </Suspense>
   );
 }
