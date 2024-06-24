@@ -2,14 +2,13 @@
 
 import axios from 'axios'
 import Link from 'next/link'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter} from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 const Header = () => {
     const path=usePathname()
     const router = useRouter()
-    const searchParams = useSearchParams();
     const [data, setData] = useState("")
 
     const logout=async()=>{
@@ -47,9 +46,10 @@ const Header = () => {
 
       useEffect(() => {
         checkAuthStatus()
-      }, [path, searchParams])
+      }, [path])
 
     return (
+        
         <header className='w-full h-[30px] mb-4 sm:mb-8'>
             <div className='w-full flex justify-between
         items-center px-4 sm:px-32 py-4'>
