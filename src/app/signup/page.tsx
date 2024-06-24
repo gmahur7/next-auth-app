@@ -56,24 +56,24 @@ const Signup = () => {
             <div className='my-4 sm:my-8 sm:mt-16 '>
                 <h1 className='text-4xl'>{loading ? "Processing" : "Sign Up"}</h1>
             </div>
-            <div className='border rounded-xl px-20 py-10'>
+            <div className='border rounded-xl px-12 sm:px-20 py-10'>
                 <div className='mb-2 text-center'>
                     <p className='text-sm sm:text-xl'>Please fill the following details to sign up.</p>
                 </div>
                 <div className='my-5 sm:text-right'>
-                    <label className='mr-3 text-xl'>User Name : </label>
+                    <label className='mr-3 text-md sm:text-xl'>User Name : </label>
                     <input className='rounded text-black px-2 py-1' type="text" value={username} onChange={e => setUsername(e.target.value)} id="username" />
                 </div>
                 <div className='my-5 sm:text-right'>
-                    <label className='mr-3 text-xl'>Email : </label>
+                    <label className='mr-3 text-md sm:text-xl'>Email : </label>
                     <input className='rounded text-black px-2 py-1' type="text" value={email} onChange={e => setEmail(e.target.value)} id="email" />
                 </div>
                 <div className='my-5 sm:text-right'>
-                    <label className='mr-3 text-xl'>Password : </label>
+                    <label className='mr-3 text-md sm:text-xl'>Password : </label>
                     <input className='rounded text-black px-2 py-1' type="text" value={password} onChange={e => setPassword(e.target.value)} id="password" />
                 </div>
                 <div className='my-5 text-center'>
-                    <button className=' bg-white border-blue-400 border-2 text-xl sm:text-lg  text-black rounded px-2 py-1' onClick={onSignup} disabled={disabled ? false : true}>{loading ? "Processing" : "Sign Up"}</button>
+                    <button className=' bg-white border-blue-400 border-2 text-md sm:text-lg  text-black rounded px-2 py-1' onClick={onSignup} disabled={disabled ? false : true}>{loading ? "Processing" : "Sign Up"}</button>
                 </div>
             </div>
             <ToastContainer/>

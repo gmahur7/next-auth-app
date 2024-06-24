@@ -1,16 +1,59 @@
 "use client"
 
+import axios from 'axios'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import React from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 const Header = () => {
     const path=usePathname()
+    const router = useRouter()
+    const searchParams = useSearchParams();
+    const [data, setData] = useState("")
+
+    const logout=async()=>{
+        try {
+          await axios.post("/api/users/logout")
+          toast.success("Logout Successfully")
+          router.push("/login")
+    
+        } catch (error:any) {
+          toast.error(error.message)
+        }
+      }
+
+    const handler=async()=>{
+        if(data){
+           logout()
+           return
+        }
+    }
+
+    async function checkAuthStatus() {
+        try {
+          const response = await fetch('/api/users/getdetails');
+          const result = await response.json();
+          
+          if (result.authenticated) {
+            setData(result.authenticated)
+          } else {
+            setData("")
+          }
+        } catch (error) {
+          toast.error("Failed To Get User Detail")
+        }
+      }
+
+      useEffect(() => {
+        checkAuthStatus()
+      }, [path, searchParams])
+
     return (
         <header className='w-full h-[30px] mb-4 sm:mb-8'>
             <div className='w-full flex justify-between
         items-center px-4 sm:px-32 py-4'>
-                <h2 className='text-2xl flex gap-2 items-center '>
+                <h2 className='text-xl sm:text-2xl flex gap-2 items-center '>
                     Next Auth App
                     <span className='hidden sm:block text-4xl'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
@@ -20,10 +63,11 @@ const Header = () => {
                     </span>
                 </h2>
                 <div>
-                    <ul className='flex gap-4 sm:gap-16'>
-                        <li className={`${path==='/'&&' text-blue-600 border-b-2 border-blue-400 pb-2'} hover:text-blue-400`}><Link href="/">Home</Link></li>
-                        <li className={`${path==='/profile'&&' text-blue-600 border-b-2 border-blue-400 pb-2'} hover:text-blue-400`}><Link href="/profile">Profile</Link></li>
-                        <li className={`${path==='/login'&&'border-b-2 border-blue-400'} hover:text-blue-400`}><Link href="/login">Login</Link></li>
+                    <ul className='flex gap-2 sm:gap-16'>
+                        <li className={`${path==='/'&&' text-blue-600 border-b-2 border-blue-400 pb-2'} hover:text-blue-400 text-sm sm:text-md`}><Link href="/">Home</Link></li>
+                        <li className={`${path==='/profile'&&' text-blue-600 border-b-2 border-blue-400 pb-2'} hover:text-blue-400 text-sm sm:text-md`}><Link href={data?"/profile":"/signup"}>{data?`Profile`:"Sign Up"}</Link></li>
+                        <li className={`${path==='/login'&&'border-b-2 border-blue-400'} hover:text-blue-400 text-sm sm:text-md`}><Link href={data?"#":"/login"} onClick={handler}>{data?`Logout`:"Login"}</Link></li>
+
                     </ul>
                 </div>
             </div>
