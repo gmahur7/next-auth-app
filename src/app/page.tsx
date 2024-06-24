@@ -45,8 +45,8 @@ export default function Home() {
           <Image src='/images/user.png' alt="image" height={100} width={200} />
         </div>
         <div>
-          <h2 className="text-xl sm:text-4xl">Welcome <span className="text-blue-500 font-bold text-2xl sm:text-5xl">{data}</span></h2>
-          <h1 className="text-2xl sm:text-6xl my-2 mb-8">Basic Next Auth App</h1>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">Welcome <span className="text-blue-500 font-bold text-2xl sm:text-5xl">{data}</span></h2>
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl my-2 mb-8">Basic Next Auth App</h1>
           <div className="flex gap-6">
             <button className="rounded px-8 py-2 bg-blue-500 hover:bg-blue-700" onClick={() => router.push('/profile')}>Profile</button>
             <button className="rounded px-8 py-2 bg-blue-500 hover:bg-blue-700" onClick={logout}>Logout</button>
