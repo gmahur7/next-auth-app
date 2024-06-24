@@ -67,7 +67,7 @@ const Login = () => {
                     <input className='rounded text-black px-2 py-1' type="text" value={password} onChange={e => setPassword(e.target.value)} id="password" />
                 </div>
                 <div className='my-5 text-center flex justify-between pl-0 sm:pl-50'>
-                    <button className='bg-white border-blue-400 border-2 text-black rounded px-4 py-1 sm:ml-[138px]' onClick={login} disabled={disabled ? false : true}>{loading ? "Processing" : "Login"}</button>
+                    <button className='bg-white border-blue-400 border-2 text-black rounded px-4 py-1 sm:ml-[130px]' onClick={login} disabled={disabled ? false : true}>{loading ? "Processing" : "Login"}</button>
                     <Link href="/signup" className='mx-0'>create account</Link>
                 </div>
             </div>
