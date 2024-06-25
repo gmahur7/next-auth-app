@@ -24,8 +24,7 @@ const Login = () => {
         setLoading(false)
         console.log(response.data.message)
         if(response.data.message==="Logged In Success"){
-            console.log("hii")
-            router.push('/')
+            router.push('/login')
             setError(false)
         }
         else {
