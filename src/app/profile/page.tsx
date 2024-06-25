@@ -21,7 +21,7 @@ const Profile = () => {
   const logout=async()=>{
     try {
       await axios.post("/api/users/logout")
-      toast.success("Logout Successfully")
+      toast.success("Logout Success")
       router.push("/login")
 
     } catch (error:any) {

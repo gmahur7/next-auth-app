@@ -8,10 +8,11 @@ import { toast } from "react-toastify";
 export default function Home() {
   const router = useRouter()
   const [data, setData] = useState("")
+
   const logout = async () => {
     try {
       await axios.post("/api/users/logout")
-      toast.success("Logout Successfully")
+      toast.success("Logout Success")
       router.push("/login")
 
     } catch (error: any) {
