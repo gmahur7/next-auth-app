@@ -65,8 +65,8 @@ const Header = () => {
                 <div>
                     <ul className='flex gap-2 sm:gap-16'>
                         <li className={`${path==='/'&&' text-blue-600 border-b-2 border-blue-400 pb-2'} hover:text-blue-400 text-sm sm:text-md`}><Link href="/">Home</Link></li>
-                        <li className={`${path==='/profile'&&' text-blue-600 border-b-2 border-blue-400 pb-2'} hover:text-blue-400 text-sm sm:text-md`}><Link href={data?"/profile":"/signup"}>{data?`Profile`:"Sign Up"}</Link></li>
-                        <li className={`${path==='/login'&&'border-b-2 border-blue-400'} hover:text-blue-400 text-sm sm:text-md`}><Link href={data?"#":"/login"} onClick={handler}>{data?`Logout`:"Login"}</Link></li>
+                        <li className={`${path==='/profile'||'/signup'&&' text-blue-600 border-b-2 border-blue-400 pb-2'} hover:text-blue-400 text-sm sm:text-md`}><Link href={data?"/profile":"/signup"}>{data?`Profile`:"Sign Up"}</Link></li>
+                        <li className={`${path==='/login'||'/logout'&&'border-b-2 border-blue-400'} hover:text-blue-400 text-sm sm:text-md`}><Link href={data?"#":"/login"} onClick={handler}>{data?`Logout`:"Login"}</Link></li>
 
                     </ul>
                 </div>
