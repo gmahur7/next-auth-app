@@ -8,7 +8,6 @@ import React, { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
-
   const router = useRouter()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -25,6 +24,7 @@ const Login = () => {
         setLoading(false)
         console.log(response.data.message)
         if(response.data.message==="Logged In Success"){
+            console.log("hii")
             router.push('/')
             setError(false)
         }
