@@ -22,7 +22,8 @@ const Login = () => {
         let response = await axios.post(`/api/users/login`, {
             username, password
         })
-        setLoading(true)
+        setLoading(false)
+        console.log(response.data.message)
         if(response.data.message==="Logged In Success"){
             router.push('/')
             setError(false)
@@ -64,7 +65,7 @@ const Login = () => {
                 </div>
                 <div className='my-5 flex flex-col sm:flex-row'>
                     <label className='mr-3 text-md sm:text-xl'>Password : </label>
-                    <input className='rounded text-black px-2 py-1' type="text" value={password} onChange={e => setPassword(e.target.value)} id="password" />
+                    <input className='rounded text-black px-2 py-1' type="password" value={password} onChange={e => setPassword(e.target.value)} id="password" />
                 </div>
                 <div className='my-5 text-center flex justify-between pl-0 sm:pl-50'>
                     <button className='bg-white border-blue-400 border-2 text-black rounded px-4 py-1 sm:ml-[130px]' onClick={login} disabled={disabled ? false : true}>{loading ? "Processing" : "Login"}</button>

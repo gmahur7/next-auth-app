@@ -70,7 +70,7 @@ const Signup = () => {
                 </div>
                 <div className='my-5 sm:text-right'>
                     <label className='mr-3 text-md sm:text-xl'>Password : </label>
-                    <input className='rounded text-black px-2 py-1' type="text" value={password} onChange={e => setPassword(e.target.value)} id="password" />
+                    <input className='rounded text-black px-2 py-1' type="password" value={password} onChange={e => setPassword(e.target.value)} id="password" />
                 </div>
                 <div className='my-5 text-center'>
                     <button className=' bg-white border-blue-400 border-2 text-md sm:text-lg  text-black rounded px-2 py-1' onClick={onSignup} disabled={disabled ? false : true}>{loading ? "Processing" : "Sign Up"}</button>
