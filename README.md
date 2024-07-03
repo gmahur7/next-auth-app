@@ -33,7 +33,7 @@ This is a basic authentication application built using Next.js, React.js, TypeSc
 1. **Clone the repository**
 
     ```bash
-    git clone https://github.com/your-username/basic-next-auth-app.git
+    git clone https://github.com/gmahur7/next-auth-app.git
     cd basic-next-auth-app
     ```
 
